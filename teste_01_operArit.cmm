@@ -3,6 +3,6 @@ int b;
 int c;
 
 void main() {  
-    a = a++;
+    a++;
 }
 

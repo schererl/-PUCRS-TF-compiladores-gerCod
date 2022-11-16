@@ -140,6 +140,16 @@ aexp : ID '=' exp ';'     {System.out.println("\tPOPL %EDX");
 						   System.out.println("\tPOPL %EDX");
 						   System.out.println("\tMOVL %EDX, _"+$1);
 						  }
+	| ID'+''+' ';'			{System.out.println("\tPUSHL $1");
+						     System.out.println("\tPOPL %EBX");
+   						     System.out.println("\tPOPL %EAX");
+						     System.out.println("\tADDL %EBX, %EAX" );
+						     System.out.println("\tPUSHL %EAX");
+							 System.out.println("\tPOPL %EDX");
+						   	 System.out.println("\tMOVL %EDX, _"+$1);
+						    }
+	| '+''+'ID ';'
+
 
 exp :  NUM  { System.out.println("\tPUSHL $"+$1); } 
     |  TRUE  { System.out.println("\tPUSHL $1"); } 
@@ -153,19 +163,6 @@ exp :  NUM  { System.out.println("\tPUSHL $"+$1); }
 		| exp '*' exp		{ gcExpArit('*'); }
 		| exp '/' exp		{ gcExpArit('/'); }
 		| exp '%' exp		{ gcExpArit('%'); }
-
-		| exp'+''+'			{System.out.println("\tPUSHL $1");
-						     System.out.println("\tPOPL %EBX");
-   						     System.out.println("\tPOPL %EAX");
-						     System.out.println("\tADDL %EBX, %EAX" );
-						     System.out.println("\tPUSHL %EAX");
-						    }
-		| '+''+'{System.out.println("\tPUSHL $1");
-				 System.out.println("\tPOPL %EBX");
-   				 System.out.println("\tPOPL %EAX");
-				 System.out.println("\tADDL %EBX, %EAX" );
-				 System.out.println("\tPUSHL %EAX");
-				 }exp
 
 		| exp '>' exp		{ gcExpRel('>'); }
 		| exp '<' exp		{ gcExpRel('<'); }											
