@@ -1,0 +1,15 @@
+int a;
+int b;
+int c;
+void main() { 
+    write(" - - - - - - - - ");
+    a=1;
+    
+    for(a=0; a < 5; a=a+1){
+        break;
+    }
+    write("RESULTADO");
+    					
+    write("    --> a: ", a);  
+} 
+
