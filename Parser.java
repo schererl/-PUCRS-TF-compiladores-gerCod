@@ -456,10 +456,10 @@ final static String yyrule[] = {
 "type : INT",
 "type : FLOAT",
 "type : BOOL",
-"lcmd : lcmd cmd gambiarra",
+"lcmd : lcmd cmd endcmd",
 "lcmd :",
-"gambiarra : ';'",
-"gambiarra :",
+"endcmd : ';'",
+"endcmd :",
 "cmd : aexp",
 "cmd : '{' lcmd '}'",
 "cmd : WRITE '(' LIT ')'",
@@ -506,7 +506,7 @@ final static String yyrule[] = {
 "exp : exp AND exp",
 };
 
-//#line 235 "exemploGC.y"
+//#line 236 "exemploGC.y"
 
   private Yylex lexer;
 
@@ -571,9 +571,9 @@ final static String yyrule[] = {
   }
 
 							
-		void gcExpArit(int oparit) {
- 				System.out.println("\tPOPL %EBX");
-   			System.out.println("\tPOPL %EAX");
+	void gcExpArit(int oparit) {
+ 		System.out.println("\tPOPL %EBX");
+   		System.out.println("\tPOPL %EAX");
 
    		switch (oparit) {
      		case '+' : System.out.println("\tADDL %EBX, %EAX" ); break;
@@ -642,7 +642,7 @@ final static String yyrule[] = {
 	}
 
    private void geraInicio() {
-			System.out.println(".text\n\n#\t Victor Scherer Putrich(17104197-3) )\n#\n"); 
+			System.out.println(".text\n\n#\t Victor Scherer Putrich(17104197-3)\n#\n"); 
 			System.out.println(".GLOBL _start\n\n");  
    }
 

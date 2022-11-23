@@ -7,11 +7,11 @@ void main() {
     
     fat=1;
     while(true){
-       if(N>1){
+       if(N<1){
         break;
        }else{
-        fat*=N;
-        N-=1;
+        fat=fat*N;
+        N=N-1;
        }
     }
     write("RESULTADO");

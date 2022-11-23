@@ -19,11 +19,11 @@
   10       | FLOAT
   11       | BOOL
 
-  12  lcmd : lcmd cmd gambiarra
+  12  lcmd : lcmd cmd endcmd
   13       |
 
-  14  gambiarra : ';'
-  15            |
+  14  endcmd : ';'
+  15         |
 
   16  cmd : aexp
   17      | '{' lcmd '}'
@@ -237,7 +237,7 @@ state 18
 
 state 19
 	mainF : VOID MAIN '(' ')' $$2 '{' lcmd . $$3 '}'  (5)
-	lcmd : lcmd . cmd gambiarra  (12)
+	lcmd : lcmd . cmd endcmd  (12)
 	$$3 : .  (4)
 
 	ID  shift 20
@@ -342,8 +342,8 @@ state 30
 
 
 state 31
-	lcmd : lcmd cmd . gambiarra  (12)
-	gambiarra : .  (15)
+	lcmd : lcmd cmd . endcmd  (12)
+	endcmd : .  (15)
 
 	';'  shift 44
 	ID  reduce 15
@@ -358,7 +358,7 @@ state 31
 	'{'  reduce 15
 	'}'  reduce 15
 
-	gambiarra  goto 45
+	endcmd  goto 45
 
 
 state 32
@@ -449,7 +449,7 @@ state 41
 
 
 state 42
-	lcmd : lcmd . cmd gambiarra  (12)
+	lcmd : lcmd . cmd endcmd  (12)
 	cmd : '{' lcmd . '}'  (17)
 
 	ID  shift 20
@@ -477,13 +477,13 @@ state 43
 
 
 state 44
-	gambiarra : ';' .  (14)
+	endcmd : ';' .  (14)
 
 	.  reduce 14
 
 
 state 45
-	lcmd : lcmd cmd gambiarra .  (12)
+	lcmd : lcmd cmd endcmd .  (12)
 
 	.  reduce 12
 
