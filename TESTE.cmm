@@ -13,7 +13,6 @@ void main() {
             c=c+1;
             break;
        }
-       continue;
     }
     write("RESULTADO");
     write("    --> a: ", a);
