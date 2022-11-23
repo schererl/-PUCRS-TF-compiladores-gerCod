@@ -10,6 +10,8 @@ disponibilizados para o comando “for”.
 3. acrescentar os comandos “break” e “continue”
 4. acrescentar o comando “for”
 
+* Link repositório github geração de código: https://github.com/schererl/PUCRS_TF-comp-gerCod
+* Link repositório github verificação semântica: https://github.com/schererl/PUCRS_tf-comp_verif_tipos
 
 # Integrantes
 * nome: Victor Scherer Putrich
