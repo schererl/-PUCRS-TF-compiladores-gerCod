@@ -23,7 +23,7 @@ disponibilizados para o comando “for”.
 - [Integrantes](#integrantes)
 - [Ambiente-de-Teste](#ambiente-de-teste)
 - [Execucao](#execucao)
-  - [Testes](#testes)
+- [Testes](#testes)
 <!--te-->
 
 # Ambiente-de-Teste
@@ -58,4 +58,4 @@ Observação2: Além dos arquivos <TESTE>.cmm (na pasta *testes*) também estar�
 
 * **arquivo *TESTE.cmm***: este programa tem um laço aninhado com um **comando 'break'**. O objetivo é demonstrar o funcionamento do break de forma que a variável 'b' que é incrementada no laço mais de dentro deve terminar com o mesmo valor de 'a'. 'a' é uma variável incrementada no laço mais de forma.
 * **arquivo *TESTE2.cmm***: este programa tem um **'for'** simples que imprime todos os valores de 'a', menos quando 'a' é igual a 2. Se a variável 'a' é igual a 2 o programa cai na **comando 'continue'** o que impede o mesmo de imprimir o valor de 'a' e assinala como 'skipped'. No final do 'for', a variável 'a' deve ser igual à condição de saída do laço; neste caso 5.
-* * **arquivo *TESTE3.cmm***: calculo de fatorial com um while com condicional sempre 'true'. Para sair do laço deve cair no condicional if para N<1 usando 'break'.
+* **arquivo *TESTE3.cmm***: calculo de fatorial com um while com condicional sempre 'true'. Para sair do laço deve cair no condicional if para N<1 usando 'break'.
