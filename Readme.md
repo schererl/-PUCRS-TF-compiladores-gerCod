@@ -17,9 +17,12 @@ disponibilizados para o comando “for”.
 * nome: Victor Scherer Putrich
 * matrícula: 17104197-3
 * email: victor.putrich@edu.pucrs.br
+---
+* nome: Guilherme Hiago Costa dos Santos
+* matrícula: 19111105-3
+* email: guilherme.hiago@edu.pucrs.br
 
-
-=================
+---
 <!--ts-->
 - [Geração de Código](#geração-de-código)
 - [Integrantes](#integrantes)
