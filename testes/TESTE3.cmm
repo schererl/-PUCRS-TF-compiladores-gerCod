@@ -1,0 +1,21 @@
+int N;
+int fat;
+void main() { 
+    write(" - - - - - - - - ");
+    write("Informe um numero para calcular o fatorial: ");
+    read( N );
+    
+    fat=1;
+    while(true){
+       if(N>1){
+        break;
+       }else{
+        fat*=N;
+        N-=1;
+       }
+    }
+    write("RESULTADO");
+    write("    --> fat: ", fat);
+    					  
+} 
+

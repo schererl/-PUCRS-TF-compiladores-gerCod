@@ -1,4 +1,5 @@
-	
+
+
 %{
   import java.io.*;
   import java.util.ArrayList;
@@ -46,11 +47,11 @@ type : INT    { $$ = INT; }
      | BOOL   { $$ = BOOL; }
      ;
 
-lcmd : lcmd cmd gambiarra
+lcmd : lcmd cmd endcmd
 	   |
 	   ;
 
-gambiarra : ';'
+endcmd : ';'
 		|
 		;
 	   
@@ -196,7 +197,7 @@ aexp : 	atrib
 						 	System.out.println("\tPOPL %EDX");
 						   	System.out.println("\tMOVL %EDX, _"+$1);
 						}
-		| ID'+''+'	{
+		| ID'+''+'	{ //o incremento ocorre depois do processamento do comando atual. 
 						System.out.println("\tPUSHL $1");
 						System.out.println("\tPOPL %EBX");
    						System.out.println("\tPOPL %EAX");
@@ -366,7 +367,7 @@ exp :  NUM  	{ System.out.println("\tPUSHL $"+$1); }
 	}
 
    private void geraInicio() {
-			System.out.println(".text\n\n#\t nome COMPLETO e matricula dos componentes do grupo...\n#\n"); 
+			System.out.println(".text\n\n#\t Victor Scherer Putrich(17104197-3)\n#\n"); 
 			System.out.println(".GLOBL _start\n\n");  
    }
 

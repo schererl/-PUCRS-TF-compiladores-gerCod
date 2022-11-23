@@ -1,6 +1,6 @@
 .text
 
-#	 nome COMPLETO e matricula dos componentes do grupo...
+#	 Victor Scherer Putrich(17104197-3) )
 #
 
 .GLOBL _start

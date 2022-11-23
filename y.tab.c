@@ -2,7 +2,7 @@
 static char yysccsid[] = "@(#)yaccpar	1.8 (Berkeley) 01/20/90";
 #endif
 #define YYBYACC 1
-#line 3 "exemploGC.y"
+#line 4 "exemploGC.y"
   import java.io.*;
   import java.util.ArrayList;
   import java.util.Stack;
@@ -367,7 +367,7 @@ YYSTYPE yylval;
 short yyss[YYSTACKSIZE];
 YYSTYPE yyvs[YYSTACKSIZE];
 #define yystacksize YYSTACKSIZE
-#line 234 "exemploGC.y"
+#line 235 "exemploGC.y"
 
   private Yylex lexer;
 
@@ -503,7 +503,7 @@ YYSTYPE yyvs[YYSTACKSIZE];
 	}
 
    private void geraInicio() {
-			System.out.println(".text\n\n#\t nome COMPLETO e matricula dos componentes do grupo...\n#\n"); 
+			System.out.println(".text\n\n#\t Victor Scherer Putrich(17104197-3) )\n#\n"); 
 			System.out.println(".GLOBL _start\n\n");  
    }
 
@@ -762,46 +762,46 @@ yyreduce:
     switch (yyn)
     {
 case 1:
-#line 30 "exemploGC.y"
+#line 31 "exemploGC.y"
 { geraInicio(); }
 break;
 case 2:
-#line 30 "exemploGC.y"
+#line 31 "exemploGC.y"
 { geraAreaDados(); geraAreaLiterais(); }
 break;
 case 3:
-#line 32 "exemploGC.y"
+#line 33 "exemploGC.y"
 { System.out.println("_start:"); }
 break;
 case 4:
-#line 33 "exemploGC.y"
+#line 34 "exemploGC.y"
 { geraFinal(); }
 break;
 case 8:
-#line 38 "exemploGC.y"
+#line 39 "exemploGC.y"
 {  TS_entry nodo = ts.pesquisa(yyvsp[-1].sval);
     	                if (nodo != null) 
                             yyerror("(sem) variavel >" + yyvsp[-1].sval + "< jah declarada");
                         else ts.insert(new TS_entry(yyvsp[-1].sval, yyvsp[-2].ival)); }
 break;
 case 9:
-#line 44 "exemploGC.y"
+#line 45 "exemploGC.y"
 { yyval.ival = INT; }
 break;
 case 10:
-#line 45 "exemploGC.y"
+#line 46 "exemploGC.y"
 { yyval.ival = FLOAT; }
 break;
 case 11:
-#line 46 "exemploGC.y"
+#line 47 "exemploGC.y"
 { yyval.ival = BOOL; }
 break;
 case 17:
-#line 58 "exemploGC.y"
+#line 59 "exemploGC.y"
 { System.out.println("\t\t# terminou o bloco..."); }
 break;
 case 18:
-#line 60 "exemploGC.y"
+#line 61 "exemploGC.y"
 { 
 								strTab.add(yyvsp[-1].sval);
                             	System.out.println("\tMOVL $_str_"+strCount+"Len, %EDX"); 
@@ -812,7 +812,7 @@ case 18:
 							}
 break;
 case 19:
-#line 70 "exemploGC.y"
+#line 71 "exemploGC.y"
 { 
 					strTab.add(yyvsp[0].sval);
                     System.out.println("\tMOVL $_str_"+strCount+"Len, %EDX"); 
@@ -822,7 +822,7 @@ case 19:
 				}
 break;
 case 20:
-#line 78 "exemploGC.y"
+#line 79 "exemploGC.y"
 { 
 					System.out.println("\tPOPL %EAX"); 
 					System.out.println("\tCALL _write");	
@@ -830,7 +830,7 @@ case 20:
             	}
 break;
 case 21:
-#line 85 "exemploGC.y"
+#line 86 "exemploGC.y"
 {
 								System.out.println("\tPUSHL $_"+yyvsp[-1].sval);
 								System.out.println("\tCALL _read");
@@ -839,7 +839,7 @@ case 21:
 							}
 break;
 case 22:
-#line 92 "exemploGC.y"
+#line 93 "exemploGC.y"
 {
 				pRot.push(proxRot);  
 				proxRot += 2;
@@ -849,7 +849,7 @@ case 22:
 			}
 break;
 case 23:
-#line 99 "exemploGC.y"
+#line 100 "exemploGC.y"
 {
 			 				System.out.println("\tPOPL %EAX   # desvia se falso...");
 							System.out.println("\tCMPL $0, %EAX");
@@ -857,7 +857,7 @@ case 23:
 						}
 break;
 case 24:
-#line 105 "exemploGC.y"
+#line 106 "exemploGC.y"
 {
 				  			System.out.printf("\tJMP rot_%02d   # terminou cmd na linha de cima\n", pRot.peek());
 							System.out.printf("rot_%02d:\n",(int)pRot.peek()+1);
@@ -867,15 +867,15 @@ case 24:
 						}
 break;
 case 25:
-#line 112 "exemploGC.y"
+#line 113 "exemploGC.y"
 { System.out.printf("\t JMP rot_%02d\n", breakRot.peek()); }
 break;
 case 26:
-#line 113 "exemploGC.y"
+#line 114 "exemploGC.y"
 { System.out.printf("\t JMP rot_%02d\n", continueRot.peek());}
 break;
 case 27:
-#line 121 "exemploGC.y"
+#line 122 "exemploGC.y"
 { 	/*aloca 4 rótulos e insere o primeiro*/
 				pRot.push(proxRot);  proxRot += 4;
 				continueRot.push(pRot.peek()+3);
@@ -886,7 +886,7 @@ case 27:
 			}
 break;
 case 28:
-#line 130 "exemploGC.y"
+#line 131 "exemploGC.y"
 {   /*se exp é falsa, salta para o final*/
 				System.out.println("\tPOPL %EAX");
 				System.out.println("\tCMPL $0, %EAX");
@@ -898,7 +898,7 @@ case 28:
 			}
 break;
 case 29:
-#line 140 "exemploGC.y"
+#line 141 "exemploGC.y"
 {
 				System.out.printf("\tJMP rot_%02d\n", pRot.peek()); /* SALTA RÓTULO 1 (VERIF. EXPRESSÃO)*/
 			
@@ -907,7 +907,7 @@ case 29:
 			}
 break;
 case 30:
-#line 147 "exemploGC.y"
+#line 148 "exemploGC.y"
 {
 				System.out.printf("\tJMP rot_%02d\n", pRot.peek()+3); /* SALTA RÓTULO 3 (INCREMENTO i)*/
 				/* RÓTULO 2: FIM*/
@@ -918,7 +918,7 @@ case 30:
 			}
 break;
 case 31:
-#line 157 "exemploGC.y"
+#line 158 "exemploGC.y"
 {	
 					pRot.push(proxRot);  proxRot += 2;
 					System.out.println("\tPOPL %EAX");
@@ -927,35 +927,35 @@ case 31:
 				}
 break;
 case 32:
-#line 164 "exemploGC.y"
+#line 165 "exemploGC.y"
 {
 					System.out.printf("rot_%02d:\n",pRot.peek()+1);
 					pRot.pop();
 				}
 break;
 case 33:
-#line 171 "exemploGC.y"
+#line 172 "exemploGC.y"
 {
 					System.out.printf("\tJMP rot_%02d\n", pRot.peek()+1);
 					System.out.printf("rot_%02d:\n",pRot.peek());
 				}
 break;
 case 35:
-#line 178 "exemploGC.y"
+#line 179 "exemploGC.y"
 {
 		    System.out.printf("\tJMP rot_%02d\n", pRot.peek()+1);
 			System.out.printf("rot_%02d:\n",pRot.peek());
 		}
 break;
 case 36:
-#line 184 "exemploGC.y"
+#line 185 "exemploGC.y"
 {
 						System.out.println("\tPOPL %EDX");
   						System.out.println("\tMOVL %EDX, _"+yyvsp[-2].sval);
 					}
 break;
 case 38:
-#line 190 "exemploGC.y"
+#line 191 "exemploGC.y"
 {
 							System.out.println("\tPUSHL _"+yyvsp[-3].sval);
 						   	System.out.println("\tPOPL %EBX");
@@ -967,8 +967,8 @@ case 38:
 						}
 break;
 case 39:
-#line 199 "exemploGC.y"
-{
+#line 200 "exemploGC.y"
+{ /*o incremento ocorre depois do processamento do comando atual. */
 						System.out.println("\tPUSHL $1");
 						System.out.println("\tPOPL %EBX");
    						System.out.println("\tPOPL %EAX");
@@ -979,75 +979,75 @@ case 39:
 					}
 break;
 case 41:
-#line 211 "exemploGC.y"
+#line 212 "exemploGC.y"
 { System.out.println("\tPUSHL $"+yyvsp[0].sval); }
 break;
 case 42:
-#line 212 "exemploGC.y"
+#line 213 "exemploGC.y"
 { System.out.println("\tPUSHL $1"); }
 break;
 case 43:
-#line 213 "exemploGC.y"
+#line 214 "exemploGC.y"
 { System.out.println("\tPUSHL $0"); }
 break;
 case 44:
-#line 214 "exemploGC.y"
+#line 215 "exemploGC.y"
 { System.out.println("\tPUSHL _"+yyvsp[0].sval); }
 break;
 case 46:
-#line 216 "exemploGC.y"
+#line 217 "exemploGC.y"
 { gcExpNot(); }
 break;
 case 47:
-#line 217 "exemploGC.y"
+#line 218 "exemploGC.y"
 { gcExpArit('+'); }
 break;
 case 48:
-#line 218 "exemploGC.y"
+#line 219 "exemploGC.y"
 { gcExpArit('-'); }
 break;
 case 49:
-#line 219 "exemploGC.y"
+#line 220 "exemploGC.y"
 { gcExpArit('*'); }
 break;
 case 50:
-#line 220 "exemploGC.y"
+#line 221 "exemploGC.y"
 { gcExpArit('/'); }
 break;
 case 51:
-#line 221 "exemploGC.y"
+#line 222 "exemploGC.y"
 { gcExpArit('%'); }
 break;
 case 52:
-#line 222 "exemploGC.y"
+#line 223 "exemploGC.y"
 { gcExpRel('>'); }
 break;
 case 53:
-#line 223 "exemploGC.y"
+#line 224 "exemploGC.y"
 { gcExpRel('<'); }
 break;
 case 54:
-#line 224 "exemploGC.y"
+#line 225 "exemploGC.y"
 { gcExpRel(EQ); }
 break;
 case 55:
-#line 225 "exemploGC.y"
+#line 226 "exemploGC.y"
 { gcExpRel(LEQ); }
 break;
 case 56:
-#line 226 "exemploGC.y"
+#line 227 "exemploGC.y"
 { gcExpRel(GEQ); }
 break;
 case 57:
-#line 227 "exemploGC.y"
+#line 228 "exemploGC.y"
 { gcExpRel(NEQ); }
 break;
 case 58:
-#line 228 "exemploGC.y"
+#line 229 "exemploGC.y"
 { gcExpLog(OR); }
 break;
 case 59:
-#line 229 "exemploGC.y"
+#line 230 "exemploGC.y"
 { gcExpLog(AND); }
 break;
 #line 1054 "y.tab.c"

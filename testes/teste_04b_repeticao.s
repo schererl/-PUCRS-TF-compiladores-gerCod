@@ -1,92 +1,125 @@
 .text
 
-#	 nome COMPLETO e matricula dos componentes do grupo...
+#	 Victor Scherer Putrich(17104197-3) )
 #
 
 .GLOBL _start
 
 
 _start:
+rot_01:
+	PUSHL $1
+	POPL %EAX   # desvia se falso...
+	CMPL $0, %EAX
+	JE rot_02
 	MOVL $_str_0Len, %EDX
 	MOVL $_str_0, %ECX
 	CALL _writeLit
 	CALL _writeln
-	PUSHL $0
+	MOVL $_str_1Len, %EDX
+	MOVL $_str_1, %ECX
+	CALL _writeLit
+	CALL _writeln
+	PUSHL $_num
+	CALL _read
 	POPL %EDX
-	MOVL %EDX, _a
-rot_01: 		#EXP 
-	PUSHL _a
-	PUSHL $5
+	MOVL %EAX, (%EDX)
+	PUSHL _num
+	POPL %EDX
+	MOVL %EDX, _fim
+	PUSHL $1
+	POPL %EDX
+	MOVL %EDX, _atual
+rot_03:
+	PUSHL _fim
+	PUSHL $1
+	POPL %EBX
+	POPL %EAX
+	ADDL %EBX, %EAX
+	PUSHL %EAX
+	PUSHL _atual
 	POPL %EAX
 	POPL %EDX
 	CMPL %EAX, %EDX
 	MOVL $0, %EAX
-	SETL  %AL
+	SETG  %AL
 	PUSHL %EAX
-	POPL %EAX
+	POPL %EAX   # desvia se falso...
 	CMPL $0, %EAX
-	JE rot_02
-	JMP rot_03
-rot_04: 		#INCR
-	PUSHL _a
+	JE rot_04
+	PUSHL _atual
+	POPL %EDX
+	MOVL %EDX, _num
+	PUSHL $1
+	POPL %EDX
+	MOVL %EDX, _cont
+	PUSHL $0
+	POPL %EDX
+	MOVL %EDX, _result
+rot_05:
+	PUSHL _num
+	PUSHL $1
+	POPL %EBX
+	POPL %EAX
+	ADDL %EBX, %EAX
+	PUSHL %EAX
+	PUSHL _cont
+	POPL %EAX
+	POPL %EDX
+	CMPL %EAX, %EDX
+	MOVL $0, %EAX
+	SETG  %AL
+	PUSHL %EAX
+	POPL %EAX   # desvia se falso...
+	CMPL $0, %EAX
+	JE rot_06
+	PUSHL _result
+	PUSHL _cont
+	POPL %EBX
+	POPL %EAX
+	ADDL %EBX, %EAX
+	PUSHL %EAX
+	POPL %EDX
+	MOVL %EDX, _result
+	PUSHL _cont
 	PUSHL $1
 	POPL %EBX
 	POPL %EAX
 	ADDL %EBX, %EAX
 	PUSHL %EAX
 	POPL %EDX
-	MOVL %EDX, _a
-	JMP rot_01
-rot_03: 		#COMANDO
-	PUSHL _a
-	PUSHL $2
-	POPL %EAX
-	POPL %EDX
-	CMPL %EAX, %EDX
-	MOVL $0, %EAX
-	SETE  %AL
-	PUSHL %EAX
-	POPL %EAX
-	CMPL $0, %EAX
-	JE rot_05
-	MOVL $_str_1Len, %EDX
-	MOVL $_str_1, %ECX
-	CALL _writeLit
-	PUSHL _a
-	POPL %EAX
-	CALL _write
-	CALL _writeln
-	 JMP rot_04
+	MOVL %EDX, _cont
 		# terminou o bloco...
-	JMP rot_06
-rot_05:
+	JMP rot_05   # terminou cmd na linha de cima
+rot_06:
 	MOVL $_str_2Len, %EDX
 	MOVL $_str_2, %ECX
 	CALL _writeLit
+	PUSHL _num
+	POPL %EAX
+	CALL _write
 	CALL _writeln
-		# terminou o bloco...
-rot_06:
 	MOVL $_str_3Len, %EDX
 	MOVL $_str_3, %ECX
 	CALL _writeLit
-	PUSHL _a
+	PUSHL _result
 	POPL %EAX
 	CALL _write
 	CALL _writeln
+	PUSHL _atual
+	PUSHL $1
+	POPL %EBX
+	POPL %EAX
+	ADDL %EBX, %EAX
+	PUSHL %EAX
+	POPL %EDX
+	MOVL %EDX, _atual
 		# terminou o bloco...
-	JMP rot_04
-rot_02:		#FIM
-	MOVL $_str_4Len, %EDX
-	MOVL $_str_4, %ECX
-	CALL _writeLit
-	CALL _writeln
-	MOVL $_str_5Len, %EDX
-	MOVL $_str_5, %ECX
-	CALL _writeLit
-	PUSHL _a
-	POPL %EAX
-	CALL _write
-	CALL _writeln
+	JMP rot_03   # terminou cmd na linha de cima
+rot_04:
+		# terminou o bloco...
+	JMP rot_01   # terminou cmd na linha de cima
+rot_02:
 
 
 
@@ -179,7 +212,11 @@ _fimread2:
 #
 # variaveis globais
 #
-_a:	.zero 4
+_num:	.zero 4
+_cont:	.zero 4
+_result:	.zero 4
+_atual:	.zero 4
+_fim:	.zero 4
 
 #
 # area de literais
@@ -194,17 +231,11 @@ _str_0:
 	 .ascii " - - - - - - - - "
 _str_0Len = . - _str_0
 _str_1:
-	 .ascii "skipped at: "
+	 .ascii "Informe um numero: "
 _str_1Len = . - _str_1
 _str_2:
-	 .ascii "next number"
+	 .ascii "Valor do somatorio de 1 a "
 _str_2Len = . - _str_2
 _str_3:
-	 .ascii "curr a: "
+	 .ascii "    --> resultado: "
 _str_3Len = . - _str_3
-_str_4:
-	 .ascii "RESULTADO"
-_str_4Len = . - _str_4
-_str_5:
-	 .ascii "    --> a: "
-_str_5Len = . - _str_5
